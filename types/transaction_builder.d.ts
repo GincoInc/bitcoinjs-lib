@@ -63,4 +63,5 @@ export declare class TransactionBuilder {
     private __canModifyOutputs;
     private __overMaximumFees;
 }
+export declare function prepareInput(input: TxbInput, ourPubKey: Buffer, redeemScript?: Buffer, witnessScript?: Buffer): TxbInput;
 export {};

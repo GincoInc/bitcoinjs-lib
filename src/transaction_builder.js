@@ -719,6 +719,7 @@ function prepareInput(input, ourPubKey, redeemScript, witnessScript) {
     signatures: [undefined],
   };
 }
+exports.prepareInput = prepareInput;
 function build(type, input, allowIncomplete) {
   const pubkeys = input.pubkeys || [];
   let signatures = input.signatures || [];

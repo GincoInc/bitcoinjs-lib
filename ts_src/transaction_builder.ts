@@ -736,7 +736,7 @@ function expandOutput(script: Buffer, ourPubKey?: Buffer): TxbOutput {
   return { type };
 }
 
-function prepareInput(
+export function prepareInput(
   input: TxbInput,
   ourPubKey: Buffer,
   redeemScript?: Buffer,
