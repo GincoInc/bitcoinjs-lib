@@ -140,8 +140,9 @@ export class TransactionBuilder {
     return txb;
   }
 
+  __INPUTS: TxbInput[];
+
   private __PREV_TX_SET: { [index: string]: boolean };
-  private __INPUTS: TxbInput[];
   private __BITCOINCASH: boolean;
   private __BITCOINGOLD: boolean;
   private __TX: Transaction;

@@ -1,6 +1,31 @@
 import { Signer } from './ecpair';
 import { Network } from './networks';
 import { Transaction } from './transaction';
+declare type MaybeBuffer = Buffer | undefined;
+declare type TxbSignatures = Buffer[] | MaybeBuffer[];
+declare type TxbPubkeys = MaybeBuffer[];
+declare type TxbWitness = Buffer[];
+declare type TxbScriptType = string;
+declare type TxbScript = Buffer;
+interface TxbInput {
+    value?: number;
+    hasWitness?: boolean;
+    signScript?: TxbScript;
+    signType?: TxbScriptType;
+    prevOutScript?: TxbScript;
+    redeemScript?: TxbScript;
+    redeemScriptType?: TxbScriptType;
+    prevOutType?: TxbScriptType;
+    pubkeys?: TxbPubkeys;
+    signatures?: TxbSignatures;
+    witness?: TxbWitness;
+    witnessScript?: TxbScript;
+    witnessScriptType?: TxbScriptType;
+    script?: TxbScript;
+    sequence?: number;
+    scriptSig?: TxbScript;
+    maxSignatures?: number;
+}
 interface TxbSignArg {
     prevOutScriptType: string;
     vin: number;
@@ -14,8 +39,8 @@ export declare class TransactionBuilder {
     network: Network;
     maximumFeeRate: number;
     static fromTransaction(transaction: Transaction, network?: Network, forkId?: number): TransactionBuilder;
+    __INPUTS: TxbInput[];
     private __PREV_TX_SET;
-    private __INPUTS;
     private __BITCOINCASH;
     private __BITCOINGOLD;
     private __TX;
