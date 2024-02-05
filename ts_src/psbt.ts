@@ -11,8 +11,6 @@ import {
   PsbtOutputUpdate,
   Transaction as ITransaction,
   TransactionFromBuffer,
-  TransactionInput,
-  TransactionOutput,
 } from 'bip174/src/lib/interfaces';
 import { checkForInput, checkForOutput } from 'bip174/src/lib/utils';
 import { fromOutputScript, toOutputScript } from './address';
@@ -44,8 +42,19 @@ const DEFAULT_SIGHASHES = [
   BTG_SIGHASH_ALL,
 ];
 
+export interface TransactionInput {
+  hash: string | Buffer;
+  index: number;
+  sequence?: number;
+}
+
 export interface PsbtTxInput extends TransactionInput {
   hash: Buffer;
+}
+
+export interface TransactionOutput {
+  script: Buffer;
+  value: number;
 }
 
 export interface PsbtTxOutput extends TransactionOutput {
